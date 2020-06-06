@@ -99,6 +99,24 @@
             <div id="myChart"></div>
             <div id="myChart2"></div>
         </div>
+        <van-tabbar v-model="tabbarActive" :fixed="true" active-color="#1f6eff">
+            <van-tabbar-item  replace to="/trqhome">
+                <span>天然气</span>
+                <van-icon slot="icon" size="25px" class="iconfont" class-prefix='icon' name='tianranqi' />
+            </van-tabbar-item>
+            <van-tabbar-item replace to="/yphghome">
+                <span>油化品</span>
+                <van-icon slot="icon" size="25px" class="iconfont" class-prefix='icon' name='jiyou-cuxiantiao' />
+            </van-tabbar-item>
+            <van-tabbar-item replace to="/zdhome" v-if="getUser.FLAG!='KQ'">
+                <span>终端</span>
+                <van-icon slot="icon" size="25px" class="iconfont" class-prefix='icon' name='zhongduan' />
+            </van-tabbar-item>
+            <van-tabbar-item replace to="/wd">
+                <span>我的</span>
+                <van-icon slot="icon" size="25px" class="iconfont" class-prefix='icon' name='wode' />
+            </van-tabbar-item>
+        </van-tabbar>
     </div>
 </template>
 <script>
@@ -121,6 +139,7 @@ export default {
     
     data () {
         return {
+            tabbarActive:0,
             list:{},
             list1time:[],
             list1Rdata:[],
@@ -578,6 +597,12 @@ export default {
         //         yhmc001:this.$route.params.yhmc001
         //     }).
         // }
+    },
+    computed: {
+        getUser(){
+            console.log(this.$store.getters.getUser)
+            return this.$store.getters.getUser
+        }
     }
 }
 </script>
@@ -609,7 +634,7 @@ export default {
             }
         }
         .content2{
-            padding: 0 0.3rem;
+            padding: 0 0.3rem 50px;
             .plan{
                 margin-top: 0.3rem;
                 .plan-item{

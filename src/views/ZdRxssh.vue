@@ -43,7 +43,6 @@
                 <van-datetime-picker
                     v-model="currentDate"
                     type="date"
-                    :maxDate="maxDate"
                     @cancel="close"
                     @confirm="DeterTime"
                 />

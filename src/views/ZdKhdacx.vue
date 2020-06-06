@@ -95,6 +95,24 @@
             <div id="myChart"></div>
             <div id="myChart2"></div>
         </div>
+        <van-tabbar v-model="tabbarActive" :fixed="true" active-color="#1f6eff">
+            <van-tabbar-item  replace to="/trqhome">
+                <span>天然气</span>
+                <van-icon slot="icon" size="25px" class="iconfont" class-prefix='icon' name='tianranqi' />
+            </van-tabbar-item>
+            <van-tabbar-item replace to="/yphghome">
+                <span>油化品</span>
+                <van-icon slot="icon" size="25px" class="iconfont" class-prefix='icon' name='jiyou-cuxiantiao' />
+            </van-tabbar-item>
+            <van-tabbar-item replace to="/zdhome">
+                <span>终端</span>
+                <van-icon slot="icon" size="25px" class="iconfont" class-prefix='icon' name='zhongduan' />
+            </van-tabbar-item>
+            <van-tabbar-item replace to="/wd">
+                <span>我的</span>
+                <van-icon slot="icon" size="25px" class="iconfont" class-prefix='icon' name='wode' />
+            </van-tabbar-item>
+        </van-tabbar>
     </div>
 </template>
 <script>
@@ -110,13 +128,14 @@ export default {
     },
     mounted(){
         
-        // this.drawLine();
+        this.drawLine();
         // this.drawLine2();
         
     },
     
     data () {
         return {
+            tabbarActive:2,
             list:{},
             list1time:[],
             list1Rdata:[],
@@ -178,12 +197,12 @@ export default {
                     {
                         type: 'category',
                         //data: this.list1time,
-                        data:['1','3','5','7','9','11','13','15','17','18','20','22','24','26','28','31'],
+                        data:['1','2','3','4','5','6','7','8','9','10','11','12','13','14','15','16','17','18','19','20','21','22','23','24','25','26','27','28','29','30','31'],
                         axisPointer: {
                             type: 'shadow',
                         },
                         axisLabel : {//坐标轴刻度标签的相关设置。
-                            interval:0,
+                            interval:1,
                             //rotate:"90"
                         },
                         
@@ -484,7 +503,7 @@ export default {
                 d=JSON.parse(d)
                 console.log(d)
                 
-                if(d.data){
+                if(d.data.length>0){
                     this.list5=d.data[0]
                     this.pro1=((d.data[0].YLXS/d.data[0].YJH)*100).toFixed(0)
                 }
@@ -503,7 +522,7 @@ export default {
                 let d=res.data.d
                 d=JSON.parse(d)
                 //console.log(d)
-                if(d.data){
+                if(d.data.length>0){
                     this.list6=d.data[0]
                     this.pro2=((d.data[0].NLXS/d.data[0].NJH)*100).toFixed(0)
                 }
@@ -523,7 +542,7 @@ export default {
                 let d=res.data.d
                 d=JSON.parse(d)
                 console.log(d)
-                if(d.data){
+                if(d.data.length>0){
                     for (let i = 0; i < d.data.length; i++) {
                         this.list1time.push(d.data[i].RQL003)
                         if(d.data[i].RQL004==0){
@@ -532,7 +551,7 @@ export default {
                         this.list1Rdata.push(d.data[i].RQL004)
                     }
                 }
-                if(d.count){
+                if(d.count.length>0){
                     for (let i = 0; i < d.count.length; i++) {
                     
                         if(d.count[i].RQL004==0){
@@ -616,7 +635,7 @@ export default {
             }
         }
         .content2{
-            padding: 0 0.3rem;
+            padding: 0 0.3rem 50px;
             .plan{
                 margin-top: 0.3rem;
                 .plan-item{

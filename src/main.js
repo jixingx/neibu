@@ -44,6 +44,10 @@ Vue.prototype.$axios=axios;
 import echarts from 'echarts'
 Vue.prototype.$echarts = echarts
 
+//引入mui
+// import mui from './assets/mui/js/mui'
+// Vue.prototype.$mui = mui
+
 Vue.config.productionTip = false
 
 new Vue({

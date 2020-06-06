@@ -13,6 +13,24 @@
                 </template>
             </div>
         </div>
+        <van-tabbar v-model="tabbarActive" :fixed="true" active-color="#1f6eff">
+            <van-tabbar-item  replace to="/trqhome">
+                <span>天然气</span>
+                <van-icon slot="icon" size="25px" class="iconfont" class-prefix='icon' name='tianranqi' />
+            </van-tabbar-item>
+            <van-tabbar-item replace to="/yphghome">
+                <span>油化品</span>
+                <van-icon slot="icon" size="25px" class="iconfont" class-prefix='icon' name='jiyou-cuxiantiao' />
+            </van-tabbar-item>
+            <van-tabbar-item replace to="/zdhome">
+                <span>终端</span>
+                <van-icon slot="icon" size="25px" class="iconfont" class-prefix='icon' name='zhongduan' />
+            </van-tabbar-item>
+            <van-tabbar-item replace to="/wd">
+                <span>我的</span>
+                <van-icon slot="icon" size="25px" class="iconfont" class-prefix='icon' name='wode' />
+            </van-tabbar-item>
+        </van-tabbar>
     </div>
 </template>
 <script>
@@ -20,6 +38,7 @@ export default {
     name:"YphgShxz",
     data () {
         return {
+            tabbarActive:2,
             cell1:[
                 // {name:"年计划审核",icon:require("../image/trq/njhsh.png"),url:"/zdshnjhsh"},
                 {name:"月度报表审核",icon:require("../image/trq/ydbbsh.png"),url:"/zdshydbbsh"},

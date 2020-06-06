@@ -24,7 +24,7 @@
                 <span>油化品</span>
                 <van-icon slot="icon" size="25px" class="iconfont" class-prefix='icon' name='jiyou-cuxiantiao' />
             </van-tabbar-item>
-            <van-tabbar-item replace to="/zdhome">
+            <van-tabbar-item replace to="/zdhome" v-if="getUser.FLAG!='KQ'">
                 <span>终端</span>
                 <van-icon slot="icon" size="25px" class="iconfont" class-prefix='icon' name='zhongduan' />
             </van-tabbar-item>
@@ -34,7 +34,7 @@
             </van-tabbar-item>
         </van-tabbar>
         
-        <van-tabbar v-model="tabbarActive" :fixed="true" v-else>
+        <van-tabbar v-model="tabbarActive2" :fixed="true" v-else>
             <van-tabbar-item to="/khjlhome" replace>
                 <span>首页</span>
                 <van-icon slot="icon" size="25px" class="iconfont" class-prefix='icon' name='shouye' />
@@ -65,7 +65,8 @@ export default {
                 //{name:"职务",icon:require("../image/wd/zhiwu.png"),value:"老大"},
                 {name:"电话",icon:require("../image/wd/dianhua.png"),value:""},
             ],
-            tabbarActive:2,
+            tabbarActive:this.$store.getters.getUser!="KQ"?2:3,
+            tabbarActive2:2,
             tebbarIsshow:true
         }
     },
@@ -74,12 +75,12 @@ export default {
             //this.tebbarIsshow=false
             next(vm=>{
                 vm.tebbarIsshow=false
-                vm.tabbarActive=2
+                // vm.tabbarActive2=2
             });
         }else{
             next(vm=>{
                 vm.tebbarIsshow=true
-                vm.tabbarActive=3
+                // vm.tabbarActive=3
             });
         }
 		// console.log(to);
@@ -96,13 +97,18 @@ export default {
             }).then((res)=>{
                 let d=res.data.d
                 d=JSON.parse(d)
-                console.log(d)
                 this.icons[0].value=d.data[0].CZYGL003
                 this.icons[1].value=d.data[0].DW002
                 this.icons[2].value=d.data[0].PHONE_NUMBER
             }).catch((error)=>{
                 //console.log(error)
             })
+        }
+    },
+    computed: {
+        getUser(){
+            console.log(this.$store.getters.getUser)
+            return this.$store.getters.getUser
         }
     }
 }

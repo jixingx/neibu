@@ -54,7 +54,6 @@
                     type="date"
                     @cancel="close"
                     @confirm="DeterTime"
-                    :maxDate="maxDate"
                 />
             </div>
         </transition>

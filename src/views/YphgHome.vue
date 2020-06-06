@@ -152,7 +152,7 @@
                 <span>油化品</span>
                 <van-icon slot="icon" size="25px" class="iconfont" class-prefix='icon' name='jiyou-cuxiantiao' />
             </van-tabbar-item>
-            <van-tabbar-item replace to="/zdhome">
+            <van-tabbar-item replace to="/zdhome" v-if="getUser.FLAG!='KQ'">
                 <span>终端</span>
                 <van-icon slot="icon" size="25px" class="iconfont" class-prefix='icon' name='zhongduan' />
             </van-tabbar-item>
@@ -640,6 +640,12 @@ export default {
                 //console.log(error)
             })
         },
+    },
+    computed: {
+        getUser(){
+            console.log(this.$store.getters.getUser)
+            return this.$store.getters.getUser
+        }
     }
 }
 </script>

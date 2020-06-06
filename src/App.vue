@@ -15,18 +15,18 @@ export default {
         let username=this.getUrlParam('name')
         // console.log(username)
         this.$axios.post('/Login',{"username":username}).then((res)=>{
-          //console.log(res.data.d)
+          console.log(res.data.d)
           let reuslt=JSON.parse(res.data.d);
           console.log(reuslt)
           
-            let user=reuslt.data
+          let user=reuslt.data
             
               
             
             
             //localStorage.setItem("user",JSON.stringify(user))
             // console.log(user)
-            this.$store.dispatch("acUser",user)
+          this.$store.dispatch("acUser",user)
           
         }).catch((error)=>{
           console.log(error)

@@ -64,6 +64,7 @@ import Zdshxz from './views/Zdshxz.vue'
 import ZdXx from './views/ZdXx.vue'
 import ZdXxxq from './views/ZdXxxq.vue'
 import wd from './views/wd.vue'
+import Proposal from './views/Proposal.vue'
 Vue.use(Router)
 
 let router=new Router({
@@ -387,6 +388,11 @@ let router=new Router({
       path: '/wd',
       name: 'wd',
       component: wd
+    },
+    {
+      path: '/proposal',
+      name: 'proposal',
+      component: Proposal
     }
     // {
     //   path: '/about',

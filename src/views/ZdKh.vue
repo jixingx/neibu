@@ -39,7 +39,24 @@
                 暂无数据
             </div>
         </div>
-        
+        <van-tabbar v-model="tabbarActive" :fixed="true" active-color="#1f6eff">
+            <van-tabbar-item  replace to="/trqhome">
+                <span>天然气</span>
+                <van-icon slot="icon" size="25px" class="iconfont" class-prefix='icon' name='tianranqi' />
+            </van-tabbar-item>
+            <van-tabbar-item replace to="/yphghome">
+                <span>油化品</span>
+                <van-icon slot="icon" size="25px" class="iconfont" class-prefix='icon' name='jiyou-cuxiantiao' />
+            </van-tabbar-item>
+            <van-tabbar-item replace to="/zdhome">
+                <span>终端</span>
+                <van-icon slot="icon" size="25px" class="iconfont" class-prefix='icon' name='zhongduan' />
+            </van-tabbar-item>
+            <van-tabbar-item replace to="/wd">
+                <span>我的</span>
+                <van-icon slot="icon" size="25px" class="iconfont" class-prefix='icon' name='wode' />
+            </van-tabbar-item>
+        </van-tabbar>
     </div>
 </template>
 <script>
@@ -47,6 +64,7 @@ export default {
     name:"ZdKh",
     data () {
         return {
+            tabbarActive:2,
             value:'',
             currentPage:1,
             activeName:'',
@@ -195,7 +213,7 @@ export default {
     }
     .content{
         // margin-top: 94px;
-        
+        padding-bottom: 50px;
         padding-left: 0.3rem;
         padding-right: 0.3rem;
         background-color: #fff;

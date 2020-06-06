@@ -26,7 +26,7 @@
                         <td>{{index+1}}</td>
                         <td>{{item.TDW002}}</td>
                         <td>{{item.CZYGL003}}</td>
-                        <td v-if="item.SPSJ=='0'"></td>
+                        <td v-if="item.SPSJ=='null'"></td>
                         <td v-else>{{item.SPSJ | timefliter('yyyy-mm-dd')}}</td>
 
                         <td v-if="item.PX==0"><van-button type="warning" size="small" @click="cxsh(item.TDW001)">撤销审核</van-button></td>
@@ -224,7 +224,7 @@ export default {
             align-items: center;
             .inputrili{
                 height: 30px;
-                width: 2.6rem;
+                width: 3rem;
                 background-color: #70a1fd;
                 border-radius: 2px;
                 display: flex;

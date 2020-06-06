@@ -508,7 +508,7 @@ export default {
             }).then((res)=>{
                 let d=res.data.d
                 d=JSON.parse(d)
-                //console.log(res.data)
+                console.log(d)
                 if(d.data.length>0){
                     this.list3=d.data
                     this.tableIsshow=true
@@ -540,6 +540,11 @@ export default {
                 
                 if(d.count){
                     this.list6=d.count[0]
+                    if(d.count[0].NJH){
+                        this.list6.NJH=d.count[0].NJH
+                    }else{
+                        this.list6.NJH=0
+                    }
                     this.pro2=parseInt(d.count[0].JD*100)
                 }
                 

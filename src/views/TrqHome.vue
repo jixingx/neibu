@@ -9,8 +9,9 @@
             
             <!-- <img src="../image/home/xiaoxi.png" slot="right" @click="tz"/> -->
         <!-- </van-nav-bar> -->
+        
         <div class="content">
-            <van-grid :border="false" :column-num="3">
+            <van-grid :border="false" :column-num="4">
                 <van-grid-item
                     v-for="(value,index) in girds"
                     :key="index"
@@ -21,6 +22,7 @@
             </van-grid>
             
         </div>
+        
         <div class="content2">
             <div class="people">
                 <van-row>
@@ -203,7 +205,7 @@
                 <span>油化品</span>
                 <van-icon slot="icon" size="25px" class="iconfont" class-prefix='icon' name='jiyou-cuxiantiao' />
             </van-tabbar-item>
-            <van-tabbar-item replace to="/zdhome">
+            <van-tabbar-item replace to="/zdhome" v-if="getUser.FLAG!='KQ'">
                 <span>终端</span>
                 <van-icon slot="icon" size="25px" class="iconfont" class-prefix='icon' name='zhongduan' />
             </van-tabbar-item>
@@ -249,7 +251,8 @@ export default {
             girds:[
                 {text:"客户",icon:require("../image/trq/kehu.png"),url:'/trqkh'},
                 {text:"数据中心",icon:require("../image/trq/yingxiaojianbao.png"),url:'/trqsjzx'},
-                {text:"审核",icon:require("../image/trq/shenhe.png"),url:'/sh'}
+                {text:"审核",icon:require("../image/trq/shenhe.png"),url:'/sh'},
+                {text:"建议与意见",icon:require("../image/trq/shenhe.png"),url:'/proposal'}
             ],
             list:{},
             list1:[],
@@ -292,6 +295,8 @@ export default {
                 this.$router.push(url)
             }else if(url=="/sh"){
                 this.$router.push('/trqshxz')
+            }else if(url=="/proposal"){
+                this.$router.push(url)
             }
         },
         //饼图绘制
@@ -613,6 +618,12 @@ export default {
             }).catch((error)=>{
                 //console.log(error)
             })
+        }
+    },
+    computed: {
+        getUser(){
+            console.log(this.$store.getters.getUser)
+            return this.$store.getters.getUser
         }
     }
 }
